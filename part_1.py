@@ -149,6 +149,26 @@ def collect_interactions(input_filepath, seed_genes, output_filepath):
     print("### Finished ###")
 
 
+def stats_summary(seed_genes, interactions_path):
+    interactions = pd.read_csv(interactions_path, sep='\t')
+
+    biogrid_seed_genes = set()
+    all_biogrid_genes = set()
+    for _, row in interactions.iterrows():
+        geneA, geneB = row
+        if geneA in seed_genes:
+            biogrid_seed_genes.add(geneA)
+        if geneB in seed_genes:
+            biogrid_seed_genes.add(geneB)
+        all_biogrid_genes.add(geneA)
+        all_biogrid_genes.add(geneB)
+
+    print("No. of Disgenet seed genes: ", len(seed_genes))
+    print("No. of Biogrid seed genes: ", len(biogrid_seed_genes))
+    print("Total no. of interacting genes: ", len(all_biogrid_genes))
+    print("Total no. of interactions: ", interactions.shape[0])
+
+
 if __name__ == "__main__":
     # filter_disease('data/curated_gene_disease_associations.tsv',
     #                'C0019208',
@@ -158,5 +178,7 @@ if __name__ == "__main__":
     #            'data/approved_genes.tsv')
 
     genes = get_genes_ids('data/approved_genes.tsv')
-    collect_interactions('data/BIOGRID-ALL-4.2.191.tsv',
-                         genes, 'data/interactions.tsv')
+    # collect_interactions('data/BIOGRID-ALL-4.2.191.tsv',
+    #                      genes, 'data/interactions.tsv')
+
+    stats_summary(genes, 'data/interactions.tsv')
