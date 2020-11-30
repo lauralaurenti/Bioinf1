@@ -95,9 +95,9 @@ def get_genes_ids(filepath):
         reader = csv.reader(tsv_in, delimiter='\t')
         _ = reader.__next__()
 
-        genes_ids = []
+        genes_ids = set()
         for line in reader:
-            genes_ids.append(int(line[0].strip()))
+            genes_ids.add(int(line[0].strip()))
 
     return genes_ids
 
@@ -169,6 +169,48 @@ def stats_summary(seed_genes, interactions_path):
     print("Total no. of interactions: ", interactions.shape[0])
 
 
+def arrange_interaction_data(approved_genes_path, interactions_path,
+                             seed_genes_interactome_path, disease_interactome_path):
+    approved_genes = pd.read_csv(approved_genes_path, sep='\t')
+    seed_genes = set(approved_genes['geneId'])
+    interactions = pd.read_csv(interactions_path, sep='\t')
+
+    seed_out = open(seed_genes_interactome_path, 'w', newline='')
+    writer_seed = csv.writer(seed_out, delimiter='\t')
+    writer_seed.writerow(['interactor A gene symbol', 'interactor B gene symbol',
+                          'interactor A Uniprot AC', 'interactor B Uniprot AC'])
+
+    disease_out = open(disease_interactome_path, 'w', newline='')
+    writer_disease = csv.writer(disease_out, delimiter='\t')
+    writer_disease.writerow(['interactor A gene symbol', 'interactor B gene symbol',
+                             'interactor A Uniprot AC', 'interactor B Uniprot AC'])
+
+    for _, row in interactions.iterrows():
+        geneA_id, geneB_id = row
+
+        if (geneA_id in seed_genes) and (geneB_id in seed_genes):
+            geneA = approved_genes.loc[approved_genes['geneId']
+                                       == geneA_id].iloc[0]
+            geneB = approved_genes.loc[approved_genes['geneId']
+                                       == geneB_id].iloc[0]
+
+            geneA_sym = geneA['geneSymbol']
+            geneB_sym = geneB['geneSymbol']
+            geneA_AC = geneA['uniprotAC']
+            geneB_AC = geneB['uniprotAC']
+
+            writer_seed.writerow([geneA_sym, geneB_sym, geneA_AC, geneB_AC])
+
+            # if (geneA_id in seed_genes) and (geneB_id in seed_genes):
+            #     writer_seed.writerow(
+            #         [geneA_sym, geneB_sym, geneA_AC, geneB_AC])
+
+            # writer_disease.writerow([geneA_sym, geneB_sym, geneA_AC, geneB_AC])
+
+    seed_out.close()
+    disease_out.close()
+
+
 if __name__ == "__main__":
     # filter_disease('data/curated_gene_disease_associations.tsv',
     #                'C0019208',
@@ -177,8 +219,13 @@ if __name__ == "__main__":
     # fetch_HGNC('data/filtered_curated_gene_disease_associations.tsv',
     #            'data/approved_genes.tsv')
 
-    genes = get_genes_ids('data/approved_genes.tsv')
+    # genes = get_genes_ids('data/approved_genes.tsv')
     # collect_interactions('data/BIOGRID-ALL-4.2.191.tsv',
     #                      genes, 'data/interactions.tsv')
 
-    stats_summary(genes, 'data/interactions.tsv')
+    # stats_summary(genes, 'data/interactions.tsv')
+
+    arrange_interaction_data('data/approved_genes.tsv',
+                             'data/interactions.tsv',
+                             'data/seed_genes_interactome.tsv',
+                             'data/disease_interactome.tsv')
