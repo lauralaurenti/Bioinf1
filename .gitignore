@@ -295,7 +295,8 @@ $RECYCLE.BIN/
 
 ### Folders ###
 data/*
-!data/approved_genes.csv
+!data/approved_genes.tsv
+!data/interactions.tsv
 
 
 ### Files ###
