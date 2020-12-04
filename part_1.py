@@ -112,11 +112,13 @@ def collect_interactions(input_filepath, seed_genes, output_filepath):
                           & (biogrid['Organism ID Interactor B'] == 9606)]
 
     # filter columns containint interactors IDs
-    biogrid = biogrid[['Entrez Gene Interactor A', 'Entrez Gene Interactor B']]
-    biogrid.columns = ['InteractorA', 'InteractorB']
-    biogrid = biogrid.apply(pd.to_numeric)
+    biogrid = biogrid[['Entrez Gene Interactor A', 'Entrez Gene Interactor B',
+                       'Official Symbol Interactor A', 'Official Symbol Interactor B']]
+    biogrid.columns = ['InteractorA', 'InteractorB', 'Sym_A', 'Sym_B']
+    biogrid[['InteractorA', 'InteractorB']] = biogrid[['InteractorA',
+                                                       'InteractorB']].apply(pd.to_numeric)
 
-    # filter interactions containing at leas 1 seed gene
+    # filter interactions containing at least 1 seed gene
     print("Filtering seed genes interactions...")
     seed_genes_inters = biogrid.loc[biogrid['InteractorA'].isin(seed_genes)
                                     | biogrid['InteractorB'].isin(seed_genes)]
@@ -211,6 +213,11 @@ def arrange_interaction_data(approved_genes_path, interactions_path,
     disease_out.close()
 
 
+def fetch_Enrichr():
+
+    pass
+
+
 if __name__ == "__main__":
     # filter_disease('data/curated_gene_disease_associations.tsv',
     #                'C0019208',
@@ -219,13 +226,13 @@ if __name__ == "__main__":
     # fetch_HGNC('data/filtered_curated_gene_disease_associations.tsv',
     #            'data/approved_genes.tsv')
 
-    # genes = get_genes_ids('data/approved_genes.tsv')
-    # collect_interactions('data/BIOGRID-ALL-4.2.191.tsv',
-    #                      genes, 'data/interactions.tsv')
+    genes = get_genes_ids('data/approved_genes.tsv')
+    collect_interactions('data/BIOGRID-ALL-4.2.191.tsv',
+                         genes, 'data/interactions.tsv')
 
-    # stats_summary(genes, 'data/interactions.tsv')
+    stats_summary(genes, 'data/interactions.tsv')
 
-    arrange_interaction_data('data/approved_genes.tsv',
-                             'data/interactions.tsv',
-                             'data/seed_genes_interactome.tsv',
-                             'data/disease_interactome.tsv')
+    # arrange_interaction_data('data/approved_genes.tsv',
+    #                          'data/interactions.tsv',
+    #                          'data/seed_genes_interactome.tsv',
+    #                          'data/disease_interactome.tsv')
