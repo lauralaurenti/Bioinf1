@@ -157,7 +157,7 @@ def stats_summary(seed_genes, interactions_path):
     biogrid_seed_genes = set()
     all_biogrid_genes = set()
     for _, row in interactions.iterrows():
-        geneA, geneB = row
+        geneA, geneB, _, _ = row
         if geneA in seed_genes:
             biogrid_seed_genes.add(geneA)
         if geneB in seed_genes:
@@ -227,8 +227,8 @@ if __name__ == "__main__":
     #            'data/approved_genes.tsv')
 
     genes = get_genes_ids('data/approved_genes.tsv')
-    collect_interactions('data/BIOGRID-ALL-4.2.191.tsv',
-                         genes, 'data/interactions.tsv')
+    # collect_interactions('data/BIOGRID-ALL-4.2.191.tsv',
+    #                      genes, 'data/interactions.tsv')
 
     stats_summary(genes, 'data/interactions.tsv')
 
