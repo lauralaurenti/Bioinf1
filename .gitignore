@@ -302,3 +302,4 @@ data/*
 ### Files ###
 *.pdf
 *.docx
+.vscode/launch.json
