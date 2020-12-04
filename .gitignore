@@ -297,6 +297,8 @@ $RECYCLE.BIN/
 data/*
 !data/approved_genes.tsv
 !data/interactions.tsv
+!data/seed_genes_interactome.tsv
+!data/disease_interactome.tsv
 
 
 ### Files ###

@@ -2,6 +2,7 @@ import csv
 import requests
 import json
 import pandas as pd
+import re
 
 from time import sleep
 from urllib.parse import urlparse
@@ -90,6 +91,41 @@ def fetch_HGNC(input_filepath, output_filepath):
     print(not_approved)
 
 
+def add_uniprot_data(genes_path, uniprot_data_path):
+    uniprot_data = {}
+
+    with open(uniprot_data_path, "r") as fp_in:
+        reader = csv.reader(fp_in, delimiter='\t')
+        _ = reader.__next__()
+
+        for line in reader:
+            gene_sym = line[2]
+            uniprot_data[gene_sym] = {
+                "uniprotAC": line[0],
+                "proteinName": line[3]
+            }
+
+    genes = pd.read_csv(genes_path, sep="\t")
+
+    for idx, row in genes.iterrows():
+        gene_sym = row['geneSymbol']
+        try:
+            gene_info = uniprot_data[gene_sym]
+            genes.at[idx, 'uniprotAC'] = gene_info['uniprotAC']
+
+            try:
+                proteinName = re.match(r".+?(?=[\(,])",
+                                       gene_info['proteinName']).group()
+            except AttributeError:
+                proteinName = gene_info['proteinName']
+
+            genes.at[idx, 'proteinName'] = proteinName
+        except KeyError:
+            continue
+
+    genes.to_csv(genes_path, sep="\t", index=False)
+
+
 def get_genes_ids(filepath):
     with open(filepath, 'r') as tsv_in:
         reader = csv.reader(tsv_in, delimiter='\t')
@@ -126,7 +162,12 @@ def collect_interactions(input_filepath, seed_genes, output_filepath):
     # create a list with all non seed genes interacting with seed genes
     all_genes = set(
         list(seed_genes_inters['InteractorA']) + list(seed_genes_inters['InteractorB']))
-    non_seed_genes = [gene for gene in all_genes if gene not in seed_genes]
+    non_seed_genes = set(
+        [gene for gene in all_genes if gene not in seed_genes])
+
+    with open('data/uniprot_non_seed_ids.txt', "w") as fp_in:
+        for el in non_seed_genes:
+            fp_in.write(str(el) + "\n")
 
     # filter interaction between non seed genes
     print("Filtering non seed genes interactions...")
@@ -171,11 +212,22 @@ def stats_summary(seed_genes, interactions_path):
     print("Total no. of interactions: ", interactions.shape[0])
 
 
+def load_uniprot_non_seed():
+    res = {}
+    with open('data/uniprot_non_seed_genes_reviewed.tab', 'r') as fp_in:
+        reader = csv.reader(fp_in, delimiter='\t')
+        for line in reader:
+            entry, sym = line
+            res[sym] = entry
+    return res
+
+
 def arrange_interaction_data(approved_genes_path, interactions_path,
                              seed_genes_interactome_path, disease_interactome_path):
     approved_genes = pd.read_csv(approved_genes_path, sep='\t')
     seed_genes = set(approved_genes['geneId'])
     interactions = pd.read_csv(interactions_path, sep='\t')
+    non_seed_genes = load_uniprot_non_seed()
 
     seed_out = open(seed_genes_interactome_path, 'w', newline='')
     writer_seed = csv.writer(seed_out, delimiter='\t')
@@ -188,34 +240,89 @@ def arrange_interaction_data(approved_genes_path, interactions_path,
                              'interactor A Uniprot AC', 'interactor B Uniprot AC'])
 
     for _, row in interactions.iterrows():
-        geneA_id, geneB_id = row
+        geneA_id, geneB_id, geneA_sym, geneB_sym = row
 
-        if (geneA_id in seed_genes) and (geneB_id in seed_genes):
-            geneA = approved_genes.loc[approved_genes['geneId']
-                                       == geneA_id].iloc[0]
-            geneB = approved_genes.loc[approved_genes['geneId']
-                                       == geneB_id].iloc[0]
+        geneA_is_seed = geneA_id in seed_genes
+        geneB_is_seed = geneB_id in seed_genes
 
-            geneA_sym = geneA['geneSymbol']
-            geneB_sym = geneB['geneSymbol']
-            geneA_AC = geneA['uniprotAC']
-            geneB_AC = geneB['uniprotAC']
+        if geneA_is_seed or geneB_is_seed:
 
-            writer_seed.writerow([geneA_sym, geneB_sym, geneA_AC, geneB_AC])
+            # populate both seed genes interactome and disease interactome
+            if geneA_is_seed and geneB_is_seed:
+                geneA = approved_genes.loc[approved_genes['geneId']
+                                           == geneA_id].iloc[0]
+                geneB = approved_genes.loc[approved_genes['geneId']
+                                           == geneB_id].iloc[0]
 
-            # if (geneA_id in seed_genes) and (geneB_id in seed_genes):
-            #     writer_seed.writerow(
-            #         [geneA_sym, geneB_sym, geneA_AC, geneB_AC])
+                geneA_AC = geneA['uniprotAC']
+                geneB_AC = geneB['uniprotAC']
 
-            # writer_disease.writerow([geneA_sym, geneB_sym, geneA_AC, geneB_AC])
+                writer_seed.writerow(
+                    [geneA_sym, geneB_sym, geneA_AC, geneB_AC])
+                writer_disease.writerow(
+                    [geneA_sym, geneB_sym, geneA_AC, geneB_AC])
+
+            # populate only disease interactome
+            if geneA_is_seed ^ geneB_is_seed:
+                if not geneA_is_seed:
+                    geneB = approved_genes.loc[approved_genes['geneId']
+                                               == geneB_id].iloc[0]
+                    geneB_AC = geneB['uniprotAC']
+                    geneA_AC = non_seed_genes.get(geneA_sym, "-")
+                else:
+                    geneA = approved_genes.loc[approved_genes['geneId']
+                                               == geneA_id].iloc[0]
+                    geneA_AC = geneA['uniprotAC']
+                    geneB_AC = non_seed_genes.get(geneB_sym, "-")
+                writer_disease.writerow(
+                    [geneA_sym, geneB_sym, geneA_AC, geneB_AC])
 
     seed_out.close()
     disease_out.close()
 
 
+def get_disease_interactome_gene_symbols(filepath):
+    with open(filepath, 'r') as tsv_in:
+        reader = csv.reader(tsv_in, delimiter='\t')
+        _ = reader.__next__()
+
+        genes_symbols = set()
+        for line in reader:
+            genes_symbols.add(line[0].strip())
+            genes_symbols.add(line[1].strip())
+
+    return genes_symbols
+
+
+def get_Enrichr_userId(gene_list):
+    ENRICHR_URL = 'http://maayanlab.cloud/Enrichr/addList'
+    genes_str = '\n'.join(gene_list)
+    payload = {
+        'list': (None, genes_str),
+    }
+
+    response = requests.post(ENRICHR_URL, files=payload)
+    if not response.ok:
+        raise Exception('Error analyzing gene list')
+
+    data = json.loads(response.text)
+    print(data)
+
+
 def fetch_Enrichr():
 
-    pass
+    ENRICHR_URL = 'http://maayanlab.cloud/Enrichr/enrich'
+    query_string = '?userListId=%s&backgroundType=%s'
+    user_list_id = 'GCDH'
+    gene_set_library = 'KEGG_2019_Human'
+    response = requests.get(
+        ENRICHR_URL + query_string % (user_list_id, gene_set_library)
+    )
+    if not response.ok:
+        raise Exception('Error fetching enrichment results')
+
+    data = json.loads(response.text)
+    print(data)
 
 
 if __name__ == "__main__":
@@ -223,16 +330,31 @@ if __name__ == "__main__":
     #                'C0019208',
     #                'data/filtered_curated_gene_disease_associations.tsv')
 
+    # create a set of approved seed genes
     # fetch_HGNC('data/filtered_curated_gene_disease_associations.tsv',
     #            'data/approved_genes.tsv')
 
-    genes = get_genes_ids('data/approved_genes.tsv')
+    # save genes IDs in a file for Uniprot
+    # genes = get_genes_ids('data/approved_genes.tsv')
+    # with open('data/uniprot_gene_ids.txt', 'w', newline="\n") as fp_in:
+    #     for gene in genes:
+    #         fp_in.write(str(gene) + "\n")
+
+    # add uniprot information to approved genes
+    # add_uniprot_data('data/approved_genes.tsv',
+    #                  'data/uniprot_seed_genes_reviewed.tab')
+
+    # genes = get_genes_ids('data/approved_genes.tsv')
     # collect_interactions('data/BIOGRID-ALL-4.2.191.tsv',
     #                      genes, 'data/interactions.tsv')
 
-    stats_summary(genes, 'data/interactions.tsv')
+    # stats_summary(genes, 'data/interactions.tsv')
 
-    # arrange_interaction_data('data/approved_genes.tsv',
-    #                          'data/interactions.tsv',
-    #                          'data/seed_genes_interactome.tsv',
-    #                          'data/disease_interactome.tsv')
+    arrange_interaction_data('data/approved_genes.tsv',
+                             'data/interactions.tsv',
+                             'data/seed_genes_interactome.tsv',
+                             'data/disease_interactome.tsv')
+
+    # genes_symbols = get_disease_interactome_gene_symbols(
+    #     'data/disease_interactome.tsv')
+    # get_Enrichr_userId(genes_symbols)
