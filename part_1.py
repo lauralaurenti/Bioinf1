@@ -306,15 +306,13 @@ def get_Enrichr_userId(gene_list):
         raise Exception('Error analyzing gene list')
 
     data = json.loads(response.text)
-    print(data)
+    return data['userListId']
 
 
-def fetch_Enrichr():
+def fetch_Enrichr(user_list_id, gene_set_library):
 
     ENRICHR_URL = 'http://maayanlab.cloud/Enrichr/enrich'
     query_string = '?userListId=%s&backgroundType=%s'
-    user_list_id = 'GCDH'
-    gene_set_library = 'KEGG_2019_Human'
     response = requests.get(
         ENRICHR_URL + query_string % (user_list_id, gene_set_library)
     )
@@ -322,7 +320,37 @@ def fetch_Enrichr():
         raise Exception('Error fetching enrichment results')
 
     data = json.loads(response.text)
-    print(data)
+    temp = data[gene_set_library]
+    temp = temp[:10]
+    data[gene_set_library] = temp
+
+    filepath = 'data/' + gene_set_library + '.json'
+    with open(filepath, "w") as fp:
+        json.dump(data, fp)
+
+
+def parse_Enrichr_data(gst):
+    print("Parsing " + gst)
+    filepath = 'data/' + gst + '.json'
+    with open(filepath, "r") as fp:
+        data = json.load(fp)
+    data = data[gst]
+
+    cols = ["index", "name", "p-value",
+            "adj p-value", "odds ratio",
+            "combined score"]
+    table_data = []
+
+    for el in data:
+        row = el[0:3] + [el[6]] + el[3:5]
+        table_data.append(row)
+
+    df = pd.DataFrame(table_data, columns=cols)
+    df.set_index("index", inplace=True)
+    tsv_path = 'data/' + gst + '.tsv'
+    df.to_csv(tsv_path, sep="\t")
+    print(df)
+    print()
 
 
 if __name__ == "__main__":
@@ -350,11 +378,29 @@ if __name__ == "__main__":
 
     # stats_summary(genes, 'data/interactions.tsv')
 
-    arrange_interaction_data('data/approved_genes.tsv',
-                             'data/interactions.tsv',
-                             'data/seed_genes_interactome.tsv',
-                             'data/disease_interactome.tsv')
+    # arrange_interaction_data('data/approved_genes.tsv',
+    #                          'data/interactions.tsv',
+    #                          'data/seed_genes_interactome.tsv',
+    #                          'data/disease_interactome.tsv')
 
     # genes_symbols = get_disease_interactome_gene_symbols(
     #     'data/disease_interactome.tsv')
-    # get_Enrichr_userId(genes_symbols)
+    # user_list_id = get_Enrichr_userId(genes_symbols)
+
+    gene_set_libraries = [
+        'KEGG_2019_Human',
+        'GO_Biological_Process_2018',
+        'GO_Molecular_Function_2018',
+        'GO_Cellular_Component_2018'
+    ]
+
+    # for gst in gene_set_libraries:
+    #     fetch_Enrichr(user_list_id, gst)
+
+    for gst in gene_set_libraries:
+        parse_Enrichr_data(gst)
+
+    # with open('data/KEGG_2019_Human.json', "r") as fp:
+    #     data = json.load(fp)
+
+    # print
