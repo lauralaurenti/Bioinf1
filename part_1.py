@@ -353,6 +353,28 @@ def parse_Enrichr_data(gst):
     print()
 
 
+def cut_descriptions(filepath):
+    from tempfile import NamedTemporaryFile
+    import shutil
+
+    tempfile = NamedTemporaryFile(mode='w', delete=False)
+
+    with open(filepath, 'r') as tsvfile, tempfile:
+        reader = csv.reader(tsvfile, delimiter='\t')
+        writer = csv.writer(tempfile, delimiter='\t')
+
+        header = reader.__next__()
+        writer.writerow(header)
+
+        for row in reader:
+            desc = row[4].split()
+            new_desc = " ".join(desc[:20])
+            new_row = row[:4] + [row[4]] + row[5:]
+            writer.writerow(row)
+
+    shutil.move(tempfile.name, filepath)
+
+
 if __name__ == "__main__":
     # filter_disease('data/curated_gene_disease_associations.tsv',
     #                'C0019208',
