@@ -394,11 +394,11 @@ if __name__ == "__main__":
     # add_uniprot_data('data/approved_genes.tsv',
     #                  'data/uniprot_seed_genes_reviewed.tab')
 
-    # genes = get_genes_ids('data/approved_genes.tsv')
+    genes = get_genes_ids('data/approved_genes.tsv')
     # collect_interactions('data/BIOGRID-ALL-4.2.191.tsv',
     #                      genes, 'data/interactions.tsv')
 
-    # stats_summary(genes, 'data/interactions.tsv')
+    stats_summary(genes, 'data/interactions.tsv')
 
     # arrange_interaction_data('data/approved_genes.tsv',
     #                          'data/interactions.tsv',
@@ -409,18 +409,18 @@ if __name__ == "__main__":
     #     'data/disease_interactome.tsv')
     # user_list_id = get_Enrichr_userId(genes_symbols)
 
-    gene_set_libraries = [
-        'KEGG_2019_Human',
-        'GO_Biological_Process_2018',
-        'GO_Molecular_Function_2018',
-        'GO_Cellular_Component_2018'
-    ]
+    # gene_set_libraries = [
+    #     'KEGG_2019_Human',
+    #     'GO_Biological_Process_2018',
+    #     'GO_Molecular_Function_2018',
+    #     'GO_Cellular_Component_2018'
+    # ]
 
     # for gst in gene_set_libraries:
     #     fetch_Enrichr(user_list_id, gst)
 
-    for gst in gene_set_libraries:
-        parse_Enrichr_data(gst)
+    # for gst in gene_set_libraries:
+    #     parse_Enrichr_data(gst)
 
     # with open('data/KEGG_2019_Human.json', "r") as fp:
     #     data = json.load(fp)
