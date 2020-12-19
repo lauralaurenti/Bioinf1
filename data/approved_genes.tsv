@@ -1,111 +1,111 @@
 geneId	geneSymbol	uniprotAC	proteinName	description	notes
-174	AFP	P02771	Alpha-fetoprotein 	-	-
-212	ALAS2	P22557	5-aminolevulinate synthase	-	-
-337	APOA4	P06727	Apolipoprotein A-IV 	-	-
-344	APOC2	P02655	Apolipoprotein C-II 	-	-
-355	FAS	P25445	Tumor necrosis factor receptor superfamily member 6 	-	-
-538	ATP7A	Q04656	Copper-transporting ATPase 1 	-	-
-540	ATP7B	P35670	Copper-transporting ATPase 2 	-	-
-578	BAK1	Q16611	Bcl-2 homologous antagonist/killer 	-	-
-595	CCND1	P24385	G1/S-specific cyclin-D1 	-	-
-596	BCL2	P10415	Apoptosis regulator Bcl-2	-	-
-598	BCL2L1	Q07817	Bcl-2-like protein 1 	-	-
-967	CD63	P08962	CD63 antigen 	-	-
-999	CDH1	P12830	Cadherin-1 	-	-
-1317	SLC31A1	O15431	High affinity copper uptake protein 1 	-	-
-1356	CP	P00450	Ceruloplasmin 	-	-
-1499	CTNNB1	P35222	Catenin beta-1 	-	-
-1544	CYP1A2	P05177	Cytochrome P450 1A2 	-	-
-1571	CYP2E1	P05181	Cytochrome P450 2E1 	-	-
-2026	ENO2	P09104	Gamma-enolase 	-	-
-2161	F12	P00748	Coagulation factor XII 	-	-
-2305	FOXM1	Q08050	Forkhead box protein M1 	-	-
-2705	GJB1	P08034	Gap junction beta-1 protein 	-	-
-2752	GLUL	P15104	Glutamine synthetase 	-	-
-2922	GRP	P07492	Gastrin-releasing peptide 	-	-
-2950	GSTP1	P09211	Glutathione S-transferase P 	-	-
-3082	HGF	P14210	Hepatocyte growth factor 	-	-
-3265	HRAS	P01112	GTPase HRas 	-	-
-3569	IL6	P05231	Interleukin-6 	-	-
-3717	JAK2	O60674	Tyrosine-protein kinase JAK2 	-	-
-3791	KDR	P35968	Vascular endothelial growth factor receptor 2 	-	-
-3845	KRAS	P01116	GTPase KRas 	-	-
-4233	MET	P08581	Hepatocyte growth factor receptor 	-	-
-4240	MFGE8	Q08431	Lactadherin 	-	-
-4283	CXCL9	Q07325	C-X-C motif chemokine 9 	-	-
-4313	MMP2	P08253	72 kDa type IV collagenase 	-	-
-4609	MYC	P01106	Myc proto-oncogene protein 	-	-
-5052	PRDX1	Q06830	Peroxiredoxin-1 	-	-
-5371	PML	P29590	Protein PML 	-	-
-5471	PPAT	Q06203	Amidophosphoribosyltransferase 	-	-
-5594	MAPK1	P28482	Mitogen-activated protein kinase 1 	-	-
-5595	MAPK3	P27361	Mitogen-activated protein kinase 3 	-	-
-5925	RB1	P06400	Retinoblastoma-associated protein 	-	-
-6364	CCL20	P78556	C-C motif chemokine 20 	-	-
-6659	SOX4	Q06945	Transcription factor SOX-4	-	-
-6696	SPP1	P10451	Osteopontin 	-	-
-6713	SQLE	Q14534	Squalene monooxygenase 	-	-
-6774	STAT3	P40763	Signal transducer and activator of transcription 3 	-	-
-7010	TEK	Q02763	Angiopoietin-1 receptor 	-	-
-7039	TGFA	P01135	Protransforming growth factor alpha [Cleaved into: Transforming growth factor alpha 	-	-
-7040	TGFB1	P01137	Transforming growth factor beta-1 proprotein [Cleaved into: Latency-associated peptide 	-	-
-7083	TK1	P04183	Thymidine kinase	-	-
-7124	TNF	P01375	Tumor necrosis factor 	-	-
-7157	TP53	P04637	Cellular tumor antigen p53 	-	-
-8517	IKBKG	Q9Y6K9	NF-kappa-B essential modulator 	-	-
-8651	SOCS1	O15524	Suppressor of cytokine signaling 1 	-	-
-8795	TNFRSF10B	O14763	Tumor necrosis factor receptor superfamily member 10B 	-	-
-8848	TSC22D1	Q15714	TSC22 domain family protein 1 	-	-
-9104	RGN	Q15493	Regucalcin 	-	-
-9970	NR1I3	Q14994	Nuclear receptor subfamily 1 group I member 3 	-	-
-22800	RRAS2	P62070	Ras-related protein R-Ras2 	-	-
-23582	CCNDBP1	O95273	Cyclin-D1-binding protein 1 	-	-
-27113	BBC3	Q9BXH1	Bcl-2-binding component 3	-	-
-219972	MPEG1	Q2M385	Macrophage-expressed gene 1 protein 	-	-
-283120	H19	-	-	-	-
-406884	MIRLET7B	-	-	-	-
-406886	MIRLET7D	-	-	-	-
-406887	MIRLET7E	-	-	-	-
-406891	MIRLET7I	-	-	-	-
-406902	MIR10A	-	-	-	-
-406910	MIR125A	-	-	-	-
-406937	MIR145	-	-	-	-
-406953	MIR18A	-	-	-	-
-406957	MIR181C	-	-	-	-
-406959	MIR183	-	-	-	-
-406962	MIR186	-	-	-	-
-406971	MIR195	-	-	-	-
-406984	MIR200B	-	-	-	-
-406989	MIR206	-	-	-	-
-406994	MIR212	-	-	-	-
-407006	MIR221	-	-	-	-
-407017	MIR26B	-	-	-	-
-407027	MIR301A	-	-	-	-
-407029	MIR30A	-	-	-	-
-407030	MIR30B	-	-	-	-
-407033	MIR30D	-	-	-	-
-407034	MIR30E	-	-	-	-
-407040	MIR34A	-	-	-	-
-407054	MIR98	-	-	-	-
-407056	MIR99B	-	-	-	-
-442898	MIR324	-	-	-	-
-442903	MIR331	-	-	-	-
-442904	MIR335	-	-	-	-
-442906	MIR338	-	-	-	-
-442907	MIR339	-	-	-	-
-442908	MIR340	-	-	-	-
-442920	MIR196B	-	-	-	-
-494332	MIR383	-	-	-	-
-554210	MIR429	-	-	-	-
-574413	MIR409	-	-	-	-
-574457	MIR181D	-	-	-	-
-574508	MIR505	-	-	-	-
-619552	MIR483	-	-	-	-
-664612	MIR539	-	-	-	-
-693183	MIR598	-	-	-	-
-693235	MIR92B	-	-	-	-
-724022	MIR652	-	-	-	-
-768213	MIR671	-	-	-	-
-100126297	MIR300	-	-	-	-
-100126333	MIR708	-	-	-	-
-100126348	MIR760	-	-	-	-
+174	AFP	P02771	Alpha-fetoprotein 	Binds copper, nickel, and fatty acids as well as, and bilirubin less well than, serum albumin.	
+212	ALAS2	P22557	5-aminolevulinate synthase	There are two delta-ALA synthases in vertebrates: an erythroid- specific form and one (housekeeping) which is expressed in all tissues.	-
+337	APOA4	P06727	Apolipoprotein A-IV 	May have a role in chylomicrons and VLDL secretion and catabolism.	-
+344	APOC2	P02655	Apolipoprotein C-II 	Component of chylomicrons, very low-density lipoproteins, low-density lipoproteins, and high-density lipoproteins in plasma. Important role in lipoprotein metabolism.	-
+355	FAS	P25445	Tumor necrosis factor receptor superfamily member 6 	Receptor for TNFSF6/FASLG. The adapter molecule FADD recruits caspase-8 to the activated receptor.	-
+538	ATP7A	Q04656	Copper-transporting ATPase 1 	May supply copper to copper-requiring proteins within the secretory pathway, when localized in the trans-Golgi network.	-
+540	ATP7B	P35670	Copper-transporting ATPase 2 	Copper ion transmembrane transporter involved in the export of copper out of the cells. It is involved in copper homeostasis in the liver.	-
+578	BAK1	Q16611	Bcl-2 homologous antagonist/killer 	Plays a role in the mitochondrial apoptosic process. Upon arrival of cell death signals, promotes mitochondrial outer membrane (MOM) permeabilization by oligomerizing to form pores within the MOM.	-
+595	CCND1	P24385	G1/S-specific cyclin-D1 	Regulatory component of the cyclin D1-CDK4 (DC) complex that phosphorylates and inhibits members of the retinoblastoma (RB) protein family including RB1 and regulates the cell-cycle during G1/S transition.	-
+596	BCL2	P10415	Apoptosis regulator Bcl-2	Suppresses apoptosis in a variety of cell systems including factor-dependent lymphohematopoietic and neural cells.	-
+598	BCL2L1	Q07817	Bcl-2-like protein 1 	Potent inhibitor of cell death. Inhibits activation of caspases. Appears to regulate cell death by blocking the voltage-dependent anion channel (VDAC).	-
+967	CD63	P08962	CD63 antigen 	Functions as cell surface receptor for TIMP1 and plays a role in the activation of cellular signaling cascades.	-
+999	CDH1	P12830	Cadherin-1 	Cadherins are calcium-dependent cell adhesion proteins (PubMed:11976333). They preferentially interact with themselves in a homophilic manner in connecting cells.	-
+1317	SLC31A1	O15431	High affinity copper uptake protein 1 	High-affinity, saturable copper transporter involved in dietary copper uptake.	-
+1356	CP	P00450	Ceruloplasmin 	Ceruloplasmin is a blue, copper-binding (6-7 atoms per molecule) glycoprotein. It has ferroxidase activity oxidizing Fe2+ to Fe3+ without releasing radical oxygen species.	-
+1499	CTNNB1	P35222	Catenin beta-1 	Key downstream component of the canonical Wnt signaling pathway.	-
+1544	CYP1A2	P05177	Cytochrome P450 1A2 	A cytochrome P450 monooxygenase involved in the metabolism of various endogenous substrates, including fatty acids, steroid hormones and vitamins.	-
+1571	CYP2E1	P05181	Cytochrome P450 2E1 	A cytochrome P450 monooxygenase involved in the metabolism of fatty acids.	-
+2026	ENO2	P09104	Gamma-enolase 	Has neurotrophic and neuroprotective properties on a broad spectrum of central nervous system (CNS) neurons.	-
+2161	F12	P00748	Coagulation factor XII 	Factor XII is a serum glycoprotein that participates in the initiation of blood coagulation, fibrinolysis, and the generation of bradykinin and angiotensin.	-
+2305	FOXM1	Q08050	Forkhead box protein M1 	Transcriptional factor regulating the expression of cell cycle genes essential for DNA replication and mitosis. Plays a role in the control of cell proliferation. 	-
+2705	GJB1	P08034	Gap junction beta-1 protein 	One gap junction consists of a cluster of closely packed pairs of transmembrane channels, the connexons, through which materials of low MW diffuse from one cell to a neighboring cell.	-
+2752	GLUL	P15104	Glutamine synthetase 	Glutamine synthetase that catalyzes the ATP-dependent conversion of glutamate and ammonia to glutamine.	-
+2922	GRP	P07492	Gastrin-releasing peptide 	Stimulates the release of gastrin and other gastrointestinal hormones (By similarity).	-
+2950	GSTP1	P09211	Glutathione S-transferase P 	Conjugation of reduced glutathione to a wide number of exogenous and endogenous hydrophobic electrophiles. Involved in the formation of glutathione conjugates of prostaglandin A2 and J2	-
+3082	HGF	P14210	Hepatocyte growth factor 		-
+3265	HRAS	P01112	GTPase HRas 	Involved in the activation of Ras protein signal transduction. Ras proteins bind GDP/GTP and possess intrinsic GTPase activity	-
+3569	IL6	P05231	Interleukin-6 	Cytokine with a wide variety of biological functions in immunity, tissue regeneration, and metabolism.	-
+3717	JAK2	O60674	Tyrosine-protein kinase JAK2 	Non-receptor tyrosine kinase involved in various processes such as cell growth, development, differentiation or histone modifications	-
+3791	KDR	P35968	Vascular endothelial growth factor receptor 2 	Tyrosine-protein kinase that acts as a cell-surface receptor for VEGFA, VEGFC and VEGFD.	-
+3845	KRAS	P01116	GTPase KRas 	Ras proteins bind GDP/GTP and possess intrinsic GTPase activity.	-
+4233	MET	P08581	Hepatocyte growth factor receptor 	Receptor tyrosine kinase that transduces signals from the extracellular matrix into the cytoplasm by binding to hepatocyte growth factor/HGF ligand.	-
+4240	MFGE8	Q08431	Lactadherin 	Plays an important role in the maintenance of intestinal epithelial homeostasis and the promotion of mucosal healing.	-
+4283	CXCL9	Q07325	C-X-C motif chemokine 9 	Cytokine that affects the growth, movement, or activation state of cells that participate in immune and inflammatory response.	-
+4313	MMP2	P08253	72 kDa type IV collagenase 	Ubiquitinous metalloproteinase that is involved in diverse functions such as remodeling of the vasculature, angiogenesis, tissue repair, tumor invasion, inflammation, and atherosclerotic plaque rupture.	-
+4609	MYC	P01106	Myc proto-oncogene protein 	Transcription factor that binds DNA in a non-specific manner, yet also specifically recognizes the core sequence 5'-CAC[GA]TG-3'.	-
+5052	PRDX1	Q06830	Peroxiredoxin-1 	Thiol-specific peroxidase that catalyzes the reduction of hydrogen peroxide and organic hydroperoxides to water and alcohols, respectively. 	-
+5371	PML	P29590	Protein PML 	Functions via its association with PML-nuclear bodies (PML-NBs) in a wide range of important cellular processes,	-
+5471	PPAT	Q06203	Amidophosphoribosyltransferase 	Catalytic activityi	-
+5594	MAPK1	P28482	Mitogen-activated protein kinase 1 	Serine/threonine kinase which acts as an essential component of the MAP kinase signal transduction pathway. 	-
+5595	MAPK3	P27361	Mitogen-activated protein kinase 3 	Serine/threonine kinase which acts as an essential component of the MAP kinase signal transduction pathway. 	-
+5925	RB1	P06400	Retinoblastoma-associated protein 	Key regulator of entry into cell division that acts as a tumor suppressor. Promotes G0-G1 transition when phosphorylated by CDK3/cyclin-C. 	-
+6364	CCL20	P78556	C-C motif chemokine 20 	Acts as a ligand for C-C chemokine receptor CCR6. Signals through binding and activation of CCR6 and induces a strong chemotactic response and mobilization of intracellular calcium ions.	-
+6659	SOX4	Q06945	Transcription factor SOX-4	Transcriptional activator that binds with high affinity to the T-cell enhancer motif 5'-AACAAAG-3' motif.	-
+6696	SPP1	P10451	Osteopontin 	Binds tightly to hydroxyapatite. Appears to form an integral part of the mineralized matrix. Probably important to cell-matrix interaction.	-
+6713	SQLE	Q14534	Squalene monooxygenase 	Catalyzes the stereospecific oxidation of squalene to (S)-2,3-epoxysqualene, and is considered to be a rate-limiting enzyme in steroid biosynthesis.	-
+6774	STAT3	P40763	Signal transducer and activator of transcription 3 	Signal transducer and transcription activator that mediates cellular responses to interleukins, KITLG/SCF, LEP and other growth factors.	-
+7010	TEK	Q02763	Angiopoietin-1 receptor 	Tyrosine-protein kinase that acts as cell-surface receptor for ANGPT1, ANGPT2 and ANGPT4 and regulates angiogenesis, endothelial cell survival, proliferation, migration, adhesion and cell spreading, reorganization of the actin cytoskeleton.	-
+7039	TGFA	P01135	Protransforming growth factor alpha [Cleaved into: Transforming growth factor alpha 	TGF alpha is a mitogenic polypeptide that is able to bind to the EGF receptor/EGFR and to act synergistically with TGF beta to promote anchorage-independent cell proliferation in soft agar.	-
+7040	TGFB1	P01137	Transforming growth factor beta-1 proprotein [Cleaved into: Latency-associated peptide 	Transforming growth factor beta-1 proprotein: Precursor of the Latency-associated peptide (LAP) and Transforming growth factor beta-1 (TGF-beta-1) chains.	-
+7083	TK1	P04183	Thymidine kinase	Two forms have been identified in animal cells, one in cytosol and one in mitochondria.	-
+7124	TNF	P01375	Tumor necrosis factor 	Cytokine that binds to TNFRSF1A/TNFR1 and TNFRSF1B/TNFBR. It is mainly secreted by macrophages and can induce cell death of certain tumor cell lines.	-
+7157	TP53	P04637	Cellular tumor antigen p53 	"Acts as a tumor suppressor in many tumor types; induces growth arrest or apoptosis depending on the physiological circumstances and cell type. "	-
+8517	IKBKG	Q9Y6K9	NF-kappa-B essential modulator 	Regulatory subunit of the IKK core complex which phosphorylates inhibitors of NF-kappa-B thus leading to the dissociation of the inhibitor/NF-kappa-B complex and ultimately the degradation of the inhibitor.	-
+8651	SOCS1	O15524	Suppressor of cytokine signaling 1 	SOCS family proteins form part of a classical negative feedback system that regulates cytokine signal transduction. 	-
+8795	TNFRSF10B	O14763	Tumor necrosis factor receptor superfamily member 10B 	Receptor for the cytotoxic ligand TNFSF10/TRAIL. The adapter molecule FADD recruits caspase-8 to the activated receptor. 	-
+8848	TSC22D1	Q15714	TSC22 domain family protein 1 	Transcriptional repressor. Acts on the C-type natriuretic peptide (CNP) promoter.	-
+9104	RGN	Q15493	Regucalcin 	Gluconolactonase with low activity towards other sugar lactones, including gulonolactone and galactonolactone.	-
+9970	NR1I3	Q14994	Nuclear receptor subfamily 1 group I member 3 	Binds and transactivates the retinoic acid response elements that control expression of the retinoic acid receptor beta 2 and alcohol dehydrogenase 3 genes.	-
+22800	RRAS2	P62070	Ras-related protein R-Ras2 	GTP-binding protein with GTPase activity involved in the regulation of MAPK signaling pathway, thereby controlling multiple cellular processes.	-
+23582	CCNDBP1	O95273	Cyclin-D1-binding protein 1 	May negatively regulate cell cycle progression. May act at least in part via inhibition of the cyclin-D1/CDK4 complex, thereby preventing phosphorylation of RB1 and blocking E2F-dependent transcription.	-
+27113	BBC3	Q9BXH1	Bcl-2-binding component 3	Essential mediator of p53/TP53-dependent and p53/TP53-independent apoptosis.	-
+219972	MPEG1	Q2M385	Macrophage-expressed gene 1 protein 	Plays a key role in the innate immune response following bacterial infection by inserting into the bacterial surface to form pores (By similarity).	-
+283120	H19	-	-	-	Not in Uniprot.
+406884	MIRLET7B	-	-	-	Not in Uniprot.
+406886	MIRLET7D	-	-	-	Not in Uniprot.
+406887	MIRLET7E	-	-	-	Not in Uniprot.
+406891	MIRLET7I	-	-	-	Not in Uniprot.
+406902	MIR10A	-	-	-	Not in Uniprot.
+406910	MIR125A	-	-	-	Not in Uniprot.
+406937	MIR145	-	-	-	Not in Uniprot.
+406953	MIR18A	-	-	-	Not in Uniprot.
+406957	MIR181C	-	-	-	Not in Uniprot.
+406959	MIR183	-	-	-	Not in Uniprot.
+406962	MIR186	-	-	-	Not in Uniprot.
+406971	MIR195	-	-	-	Not in Uniprot.
+406984	MIR200B	-	-	-	Not in Uniprot.
+406989	MIR206	-	-	-	Not in Uniprot.
+406994	MIR212	-	-	-	Not in Uniprot.
+407006	MIR221	-	-	-	Not in Uniprot.
+407017	MIR26B	-	-	-	Not in Uniprot.
+407027	MIR301A	-	-	-	Not in Uniprot.
+407029	MIR30A	-	-	-	Not in Uniprot.
+407030	MIR30B	-	-	-	Not in Uniprot.
+407033	MIR30D	-	-	-	Not in Uniprot.
+407034	MIR30E	-	-	-	Not in Uniprot.
+407040	MIR34A	-	-	-	Not in Uniprot.
+407054	MIR98	-	-	-	Not in Uniprot.
+407056	MIR99B	-	-	-	Not in Uniprot.
+442898	MIR324	-	-	-	Not in Uniprot.
+442903	MIR331	-	-	-	Not in Uniprot.
+442904	MIR335	-	-	-	Not in Uniprot.
+442906	MIR338	-	-	-	Not in Uniprot.
+442907	MIR339	-	-	-	Not in Uniprot.
+442908	MIR340	-	-	-	Not in Uniprot.
+442920	MIR196B	-	-	-	Not in Uniprot.
+494332	MIR383	-	-	-	Not in Uniprot.
+554210	MIR429	-	-	-	Not in Uniprot.
+574413	MIR409	-	-	-	Not in Uniprot.
+574457	MIR181D	-	-	-	Not in Uniprot.
+574508	MIR505	-	-	-	Not in Uniprot.
+619552	MIR483	-	-	-	Not in Uniprot.
+664612	MIR539	-	-	-	Not in Uniprot.
+693183	MIR598	-	-	-	Not in Uniprot.
+693235	MIR92B	-	-	-	Not in Uniprot.
+724022	MIR652	-	-	-	Not in Uniprot.
+768213	MIR671	-	-	-	Not in Uniprot.
+100126297	MIR300	-	-	-	Not in Uniprot.
+100126333	MIR708	-	-	-	Not in Uniprot.
+100126348	MIR760	-	-	-	Not in Uniprot.
