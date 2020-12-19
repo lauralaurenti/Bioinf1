@@ -299,6 +299,10 @@ data/*
 !data/interactions.tsv
 !data/seed_genes_interactome.tsv
 !data/disease_interactome.tsv
+!data/GO_Biological_Process_2018.tsv
+!data/GO_Cellular_Component_2018.tsv
+!data/GO_Molecular_Function_2018.tsv
+!data/KEGG_2019_Human.tsv
 
 
 ### Files ###
