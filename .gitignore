@@ -306,3 +306,5 @@ data/*
 *.docx
 .vscode/launch.json
 DIAMOnD3.py.bak
+tables_visual.ipynb
+!NM_project_report.docx
