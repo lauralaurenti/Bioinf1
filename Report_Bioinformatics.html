@@ -590,9 +590,12 @@ summary {
 </div>
 
 
+<div id="astract" class="section level1">
+<h1>Astract</h1>
+<p>In this project we analyzed the Novikoff hepatoma desease,with the aim of carrying on a network medicine analysis. We started with the data collection,exploring the related information sources (DisGeNet datasets), collecting the the list of human genes of interest and finally scraping protein-protein interaction data. Proceeding with the data analysis we created the graph, we calculated the main network measures for the disease interactome and we applied the MCL algorithm to find out putative disease modules with hypergeometric test and DIAMOnD tool.</p>
 <div id="disease-description-hepatoma" class="section level2">
 <h2>Disease Description: Hepatoma</h2>
-<p>Novikoff hepatoma mitochondria were studied with regard to their functional and structural organiza-tion. The activities of cytochrome oxidase and malate dehydrogenase in mitochondria purified on su-crose gradients were similar in organelles derived from normal liver and hepatoma tissue. However, the activities of reduced nicotinamide adenine dinucleotide oxidase and succinate oxidase in hepato-ma mitochondria were reduced to only 10 and 35%, respectively, of the activities in liver mitochondria. Also, monoamine oxidase and rotenone-insensitive reduced nicotinamide adenine dinucleotide-cytochrome c reductase (enzymes localized in the outer mitochondrial membrane) have significantly reduced activities in hepatoma mitochondria. The structural changes in hepatoma mitochondria might be correlated with differences in the banding patterns of liver and hepatoma mitochondria in sucrose gradients. While liver mitochondria banded sharply at a density of 1.187 g/ml, as evidenced by marker enzyme activity and protein assay, hepatoma mitochondria were heterogeneous, banding over a den-sity range of 1.144 to 1.161 g/ml. The addition of 1% bovine serum albumin to the isolation medium increased the density of hepatoma mitochondria in sucrose gradients to 1.171 g/ml and resulted in sharp, homogeneous bands. This increase in density is due in part to protein binding, as evidenced by bovine serum albumin-14C-binding experiments. In addition, hepatoma mitochondria were shown to be heterogeneous by their separation into three density classes on discontinuous bovine serum al-bumin gradients.</p>
+<p>Novikoff hepatoma mitochondria were studied with regard to their functional and structural organization. The activities of cytochrome oxidase and malate dehydrogenase in mitochondria purified on sucrose gradients were similar in organelles derived from normal liver and hepatoma tissue. However, the activities of reduced nicotinamide adenine dinucleotide oxidase and succinate oxidase in hepatoma mitochondria were reduced to only 10 and 35%, respectively, of the activities in liver mitochondria. Also, monoamine oxidase and rotenone-insensitive reduced nicotinamide adenine dinucleotide-cytochrome c reductase (enzymes localized in the outer mitochondrial membrane) have significantly reduced activities in hepatoma mitochondria. The structural changes in hepatoma mitochondria might be correlated with differences in the banding patterns of liver and hepatoma mitochondria in sucrose gradients. While liver mitochondria banded sharply at a density of 1.187 g/ml, as evidenced by marker enzyme activity and protein assay, hepatoma mitochondria were heterogeneous, banding over a density range of 1.144 to 1.161 g/ml.</p>
 </div>
 <div id="seed-genes" class="section level2">
 <h2>Seed genes</h2>
@@ -3851,100 +3854,17 @@ Colorectal cancer
 </div>
 <div id="global-measures-of-the-disease-interactome-lcc" class="section level3">
 <h3>Global measures of the disease interactome LCC</h3>
-<table class=" lightable-material lightable-striped lightable-hover" style="font-family: &quot;Source Sans Pro&quot;, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-X
-</th>
-<th style="text-align:right;">
-X0
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-average_degree
-</td>
-<td style="text-align:right;">
-4.183919e+00
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-connected_componets_cardinality
-</td>
-<td style="text-align:right;">
-1.000000e+00
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-centralization
-</td>
-<td style="text-align:right;">
-3.090764e-01
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-nodes_cardinality
-</td>
-<td style="text-align:right;">
-6.318000e+03
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-network_radius,centralization
-</td>
-<td style="text-align:right;">
-4.000000e+00
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-network_diameter
-</td>
-<td style="text-align:right;">
-8.000000e+00
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-edges_cardinality
-</td>
-<td style="text-align:right;">
-1.321700e+04
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-average_path_len
-</td>
-<td style="text-align:right;">
-3.163104e+00
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-average_clustering_coefficient
-</td>
-<td style="text-align:right;">
-1.912744e-01
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-isolated_nodes_cardinality
-</td>
-<td style="text-align:right;">
-0.000000e+00
-</td>
-</tr>
-</tbody>
-</table>
+<pre><code>##                                  X           X0
+## 1                   average_degree 4.183919e+00
+## 2  connected_componets_cardinality 1.000000e+00
+## 3                   centralization 3.090764e-01
+## 4                nodes_cardinality 6.318000e+03
+## 5    network_radius,centralization 4.000000e+00
+## 6                 network_diameter 8.000000e+00
+## 7                edges_cardinality 1.321700e+04
+## 8                 average_path_len 3.163104e+00
+## 9   average_clustering_coefficient 1.912744e-01
+## 10      isolated_nodes_cardinality 0.000000e+00</code></pre>
 <div id="visualize-lcc" class="section level4">
 <h4>Visualize LCC</h4>
 <div class="figure">
@@ -4581,6 +4501,7 @@ TNFRSF10B
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 

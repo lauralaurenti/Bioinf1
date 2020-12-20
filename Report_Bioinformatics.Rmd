@@ -9,10 +9,15 @@ output:
 ```{r setup, include=FALSE,warning=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+# Astract
+
+In this project we analyzed the Novikoff hepatoma desease,with the aim of carrying on a network medicine analysis. We started with the data collection,exploring the related information sources (DisGeNet datasets), collecting the the list of human genes of interest and finally scraping protein-protein interaction data. Proceeding with the data analysis we created the graph, we calculated the main network measures for the disease interactome and we applied the MCL algorithm to find out putative disease modules with hypergeometric test and DIAMOnD tool.
+
+
 
 ## Disease Description: Hepatoma
 
-Novikoff hepatoma mitochondria were studied with regard to their functional and structural organiza-tion. The activities of cytochrome oxidase and malate dehydrogenase in mitochondria purified on su-crose gradients were similar in organelles derived from normal liver and hepatoma tissue. However, the activities of reduced nicotinamide adenine dinucleotide oxidase and succinate oxidase in hepato-ma mitochondria were reduced to only 10 and 35%, respectively, of the activities in liver mitochondria. Also, monoamine oxidase and rotenone-insensitive reduced nicotinamide adenine dinucleotide-cytochrome c reductase (enzymes localized in the outer mitochondrial membrane) have significantly reduced activities in hepatoma mitochondria. The structural changes in hepatoma mitochondria might be correlated with differences in the banding patterns of liver and hepatoma mitochondria in sucrose gradients. While liver mitochondria banded sharply at a density of 1.187 g/ml, as evidenced by marker enzyme activity and protein assay, hepatoma mitochondria were heterogeneous, banding over a den-sity range of 1.144 to 1.161 g/ml. The addition of 1% bovine serum albumin to the isolation medium increased the density of hepatoma mitochondria in sucrose gradients to 1.171 g/ml and resulted in sharp, homogeneous bands. This increase in density is due in part to protein binding, as evidenced by bovine serum albumin-14C-binding experiments. In addition, hepatoma mitochondria were shown to be heterogeneous by their separation into three density classes on discontinuous bovine serum al-bumin gradients.
+Novikoff hepatoma mitochondria were studied with regard to their functional and structural organization. The activities of cytochrome oxidase and malate dehydrogenase in mitochondria purified on sucrose gradients were similar in organelles derived from normal liver and hepatoma tissue. However, the activities of reduced nicotinamide adenine dinucleotide oxidase and succinate oxidase in hepatoma mitochondria were reduced to only 10 and 35%, respectively, of the activities in liver mitochondria. Also, monoamine oxidase and rotenone-insensitive reduced nicotinamide adenine dinucleotide-cytochrome c reductase (enzymes localized in the outer mitochondrial membrane) have significantly reduced activities in hepatoma mitochondria. The structural changes in hepatoma mitochondria might be correlated with differences in the banding patterns of liver and hepatoma mitochondria in sucrose gradients. While liver mitochondria banded sharply at a density of 1.187 g/ml, as evidenced by marker enzyme activity and protein assay, hepatoma mitochondria were heterogeneous, banding over a density range of 1.144 to 1.161 g/ml. 
 
 
 
@@ -30,11 +35,12 @@ All the data collected has been stored in a .tsv file.
 
 approved_genes= read.table(file = 'data/approved_genes.tsv', sep = '\t', header = TRUE)
 sub_approved_genes = approved_genes[,c("geneId","geneSymbol","uniprotAC","proteinName","notes")]
-library(kableExtra)
+sub_approved_genes
+#library(kableExtra)
 
-sub_approved_genes %>%
-  kbl() %>%
-  kable_material(c("striped", "hover"))
+#sub_approved_genes %>%
+#  kbl() %>%
+#  kable_material(c("striped", "hover"))
 ```
 
 
@@ -63,10 +69,10 @@ Here are some summary statistics about the interactomes:
 library(kableExtra)
 
 seed_genes_interactome = read.table(file = 'data/seed_genes_interactome.tsv', sep = '\t', header = TRUE)
-
-seed_genes_interactome[1:8,] %>%
-  kbl() %>%
-  kable_material(c("striped", "hover"))
+seed_genes_interactome[1:8,]
+#seed_genes_interactome[1:8,] %>%
+#  kbl() %>%
+#  kable_material(c("striped", "hover"))
 ```
 
 ### Genes Interactome (first 8)
@@ -75,9 +81,11 @@ seed_genes_interactome[1:8,] %>%
 library(kableExtra)
 
 interactions = read.table(file = 'data/interactions.tsv', sep = '\t', header = TRUE)
-interactions[1:8,] %>%
-  kbl() %>%
-  kable_material(c("striped", "hover"))
+interactions[1:8,]
+
+#interactions[1:8,] %>%
+#  kbl() %>%
+#  kable_material(c("striped", "hover"))
 ```
 
 
@@ -94,9 +102,12 @@ Without going too much into the details of the code, what we did was: extracting
 library(kableExtra)
 
 GO_Biological_Process_2018= read.table(file = 'data/GO_Biological_Process_2018.tsv', sep = '\t', header = TRUE)
-GO_Biological_Process_2018 %>%
-  kbl() %>%
-  kable_material(c("striped", "hover"))
+
+GO_Biological_Process_2018
+
+#GO_Biological_Process_2018 %>%
+#  kbl() %>%
+#  kable_material(c("striped", "hover"))
 ```
 
 #### Cellular Component
@@ -105,9 +116,11 @@ GO_Biological_Process_2018 %>%
 library(kableExtra)
 
 GO_Cellular_Component_2018= read.table(file = 'data/GO_Cellular_Component_2018.tsv', sep = '\t', header = TRUE)
-GO_Biological_Process_2018 %>%
-  kbl() %>%
-  kable_material(c("striped", "hover"))
+GO_Biological_Process_2018
+
+#GO_Biological_Process_2018 %>%
+#  kbl() %>%
+#  kable_material(c("striped", "hover"))
 ```
 
 #### Molecular Function
@@ -116,9 +129,10 @@ GO_Biological_Process_2018 %>%
 library(kableExtra)
 
 GO_Molecular_Function_2018= read.table(file = 'data/GO_Molecular_Function_2018.tsv', sep = '\t', header = TRUE)
-GO_Molecular_Function_2018 %>%
-  kbl() %>%
-  kable_material(c("striped", "hover"))
+GO_Molecular_Function_2018
+#GO_Molecular_Function_2018 %>%
+#  kbl() %>%
+#  kable_material(c("striped", "hover"))
 ```
 
 #### KEGG 
@@ -127,9 +141,10 @@ GO_Molecular_Function_2018 %>%
 library(kableExtra)
 
 KEGG_2019_Human= read.table(file = 'data/KEGG_2019_Human.tsv', sep = '\t', header = TRUE)
-KEGG_2019_Human %>%
-  kbl() %>%
-  kable_material(c("striped", "hover"))
+KEGG_2019_Human
+#KEGG_2019_Human %>%
+#  kbl() %>%
+#  kable_material(c("striped", "hover"))
 
 
 ```
@@ -141,9 +156,10 @@ KEGG_2019_Human %>%
 ```{r}
 library(kableExtra)
 graph_final_values= read.csv(file = 'data/graph_final_values.tsv', sep = '\t', header = TRUE)
-graph_final_values %>%
-  kbl() %>%
-  kable_material(c("striped", "hover"))
+graph_final_values
+#graph_final_values %>%
+#  kbl() %>%
+#  kable_material(c("striped", "hover"))
 ```
 
 
@@ -152,10 +168,6 @@ graph_final_values %>%
 
 ![Disease interactome graph.](g.graphml.png)
 
-```{r}
-
-
-```
 
 
 ### First 20 highest ranking genes for betweenness 
@@ -164,9 +176,10 @@ graph_final_values %>%
 ```{r,echo=FALSE}
 library(kableExtra)
 sorted_local= read.csv(file = 'data/sorted_local.tsv', sep = '\t', header = TRUE)
-sorted_local[1:30,] %>%
-  kbl() %>%
-  kable_material(c("striped", "hover"))
+sorted_local
+#sorted_local[1:30,] %>%
+#  kbl() %>%
+#  kable_material(c("striped", "hover"))
 ```
 
 
