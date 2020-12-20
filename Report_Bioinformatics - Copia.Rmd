@@ -1,13 +1,10 @@
 ---
 title: "Bioinformatics"
-output:
-  pdf_document: default
-  word_document: default
-  html_document: default
+output: html_document
 ---
 
-```{r setup, include=FALSE,warning=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Disease Description: Hepatoma
@@ -26,15 +23,15 @@ All the data collected has been stored in a .tsv file.
   
 ### Table visualization  
   
-```{r,warning=FALSE}
+```{r}
 
 approved_genes= read.table(file = 'data/approved_genes.tsv', sep = '\t', header = TRUE)
 sub_approved_genes = approved_genes[,c("geneId","geneSymbol","uniprotAC","proteinName","notes")]
 library(kableExtra)
 
-sub_approved_genes %>%
-  kbl() %>%
-  kable_material(c("striped", "hover"))
+#sub_approved_genes %>%
+#  kbl() %>%
+#  kable_material(c("striped", "hover"))
 ```
 
 
@@ -64,9 +61,9 @@ library(kableExtra)
 
 seed_genes_interactome = read.table(file = 'data/seed_genes_interactome.tsv', sep = '\t', header = TRUE)
 
-seed_genes_interactome[1:8,] %>%
-  kbl() %>%
-  kable_material(c("striped", "hover"))
+#seed_genes_interactome[1:8,] %>%
+#  kbl() %>%
+#  kable_material(c("striped", "hover"))
 ```
 
 ### Genes Interactome (first 8)
@@ -75,9 +72,9 @@ seed_genes_interactome[1:8,] %>%
 library(kableExtra)
 
 interactions = read.table(file = 'data/interactions.tsv', sep = '\t', header = TRUE)
-interactions[1:8,] %>%
-  kbl() %>%
-  kable_material(c("striped", "hover"))
+#interactions[1:8,] %>%
+#  kbl() %>%
+#  kable_material(c("striped", "hover"))
 ```
 
 
@@ -89,14 +86,14 @@ Without going too much into the details of the code, what we did was: extracting
 
 ### Tables 
 
-#### Biological Process
+#### Biologica Process
 ```{r}
 library(kableExtra)
 
 GO_Biological_Process_2018= read.table(file = 'data/GO_Biological_Process_2018.tsv', sep = '\t', header = TRUE)
-GO_Biological_Process_2018 %>%
-  kbl() %>%
-  kable_material(c("striped", "hover"))
+#GO_Biological_Process_2018 %>%
+#  kbl() %>%
+#  kable_material(c("striped", "hover"))
 ```
 
 #### Cellular Component
@@ -105,9 +102,9 @@ GO_Biological_Process_2018 %>%
 library(kableExtra)
 
 GO_Cellular_Component_2018= read.table(file = 'data/GO_Cellular_Component_2018.tsv', sep = '\t', header = TRUE)
-GO_Biological_Process_2018 %>%
-  kbl() %>%
-  kable_material(c("striped", "hover"))
+#GO_Biological_Process_2018 %>%
+#  kbl() %>%
+#  kable_material(c("striped", "hover"))
 ```
 
 #### Molecular Function
@@ -116,9 +113,9 @@ GO_Biological_Process_2018 %>%
 library(kableExtra)
 
 GO_Molecular_Function_2018= read.table(file = 'data/GO_Molecular_Function_2018.tsv', sep = '\t', header = TRUE)
-GO_Molecular_Function_2018 %>%
-  kbl() %>%
-  kable_material(c("striped", "hover"))
+#GO_Molecular_Function_2018 %>%
+#  kbl() %>%
+#  kable_material(c("striped", "hover"))
 ```
 
 #### KEGG 
@@ -127,47 +124,58 @@ GO_Molecular_Function_2018 %>%
 library(kableExtra)
 
 KEGG_2019_Human= read.table(file = 'data/KEGG_2019_Human.tsv', sep = '\t', header = TRUE)
-KEGG_2019_Human %>%
-  kbl() %>%
-  kable_material(c("striped", "hover"))
-
-
+#KEGG_2019_Human %>%
+#  kbl() %>%
+#  kable_material(c("striped", "hover"))
 ```
 
 
+### LCC Visualization
 
-### Global measures of the disease interactome LCC
 
-```{r}
-library(kableExtra)
-graph_final_values= read.csv(file = 'data/graph_final_values.tsv', sep = '\t', header = TRUE)
-graph_final_values %>%
-  kbl() %>%
-  kable_material(c("striped", "hover"))
+```{r, include=F}
+
+disease_interactome = read.table(file = 'data/disease_interactome.tsv', sep = '\t', header = TRUE)
+
+require(igraph)
+require(hbm)
+
+data = as.data.frame(disease_interactome)
+new_df <- data[,c("interactor.A.gene.symbol","interactor.B.gene.symbol")]
+
+mat = get.adjacency(graph.edgelist(as.matrix(new_df), directed=FALSE))
+
+disease_interactome <- graph_from_adjacency_matrix(mat , mode='undirected', diag=F, weighted = T)
+
+
+library(visNetwork)
+library(RColorBrewer)
+vis.nodes <- igraph::as_data_frame(disease_interactome, what="vertices")
+vis.links <- igraph::as_data_frame(disease_interactome, what="edges" )
+
+vis.nodes$id = vis.nodes$name
+vis.nodes$shape  <- "dot"  
+vis.nodes$shadow <- TRUE # Nodes will drop shadow
+weight_colorable = (vis.links$weight - min(vis.links$weight))/(max(vis.links$weight) - min(vis.links$weight))
+#vis.links$color = colorRamp(colors = rev(brewer.pal(7, "RdBu")))(weight_colorable) %>% 
+#  apply(1, function(x) rgb(x[1], x[2], x[3], maxColorValue=255))
+
+
+type_chr = character(length(vis.nodes$id))
+type_num = numeric(length(vis.nodes$id))
+
+
+vis.nodes$title  <- type_chr # Text on click
+vis.nodes$label  <- vis.nodes$name # Node label
+#vis.nodes$color.background <- c("white", "black")[type_num]
+vis.nodes$color.border <- "slategrey"
+visNetwork(vis.nodes, vis.links) %>% 
+  visLegend() %>% 
+  visOptions(highlightNearest = TRUE, 
+             selectedBy = "title")
+
 ```
 
-
-
-#### Visualize LCC
-
-![Disease interactome graph.](g.graphml.png)
-
-```{r}
-
-
-```
-
-
-### First 20 highest ranking genes for betweenness 
-
-
-```{r,echo=FALSE}
-library(kableExtra)
-sorted_local= read.csv(file = 'data/sorted_local.tsv', sep = '\t', header = TRUE)
-sorted_local[1:30,] %>%
-  kbl() %>%
-  kable_material(c("striped", "hover"))
-```
 
 
 

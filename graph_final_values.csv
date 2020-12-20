@@ -1,0 +1,11 @@
+,0
+average_degree,4.183918961696739
+connected_componets_cardinality,1.0
+centralization,0.3090763749235911
+nodes_cardinality,6318.0
+"network_radius,centralization",4.0
+network_diameter,8.0
+edges_cardinality,13217.0
+average_path_len,3.1631040976721945
+average_clustering_coefficient,0.19127438839462943
+isolated_nodes_cardinality,0.0
