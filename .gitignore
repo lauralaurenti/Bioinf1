@@ -304,6 +304,7 @@ data/*
 !data/GO_Molecular_Function_2018.tsv
 !data/KEGG_2019_Human.tsv
 !data/sorted_local.csv
+!data/graph_final_values.tsv
 
 ### Files ###
 *.pdf
