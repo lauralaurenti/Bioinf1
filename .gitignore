@@ -303,7 +303,7 @@ data/*
 !data/GO_Cellular_Component_2018.tsv
 !data/GO_Molecular_Function_2018.tsv
 !data/KEGG_2019_Human.tsv
-!data/sorted_local.csv
+!data/diamond_data.csv
 
 ### Files ###
 *.pdf
@@ -311,4 +311,4 @@ data/*
 .vscode/launch.json
 DIAMOnD3.py.bak
 tables_visual.ipynb
-!NM_project_report.docx
+!NM_HW1.pdf
